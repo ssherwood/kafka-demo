@@ -1,0 +1,16 @@
+spring:
+  kafka:
+    bootstrap-servers: "${vcap.services.cp.credentials.brokers}"
+    properties:
+      # CCloud broker connection parameters
+      ssl.endpoint.identification.algorithm:
+      sasl.mechanism: PLAIN
+      request.timeout.ms: 20000
+      retry.backoff.ms: 500
+      sasl.jaas.config: "${vcap.services.cp.credentials.jaasconfig}"
+      security.protocol: SASL_PLAINTEXT
+
+      # CCloud Schema Registry Connection parameter
+      schema.registry.url: "${vcap.services.cp.credentials.sr}"
+      basic.auth.credentials.source: USER_INFO
+      schema.registry.basic.auth.user.info: "${vcap.services.cp.credentials.sr-auth}"

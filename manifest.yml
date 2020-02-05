@@ -1,0 +1,14 @@
+---
+applications:
+  - name: pubsub
+    path: pubsub/target/pubsub-0.0.1-SNAPSHOT.jar
+    # generate a unique route for the workshop only
+    random-route: true
+    services:
+      - cp
+  - name: stream
+    path: stream/target/stream-0.0.1-SNAPSHOT.jar
+    # generate a unique route for the workshop only
+    random-route: true
+    services:
+      - cp

@@ -1,0 +1,41 @@
+topic:
+  # use your studentId <student-id>-users
+  # hmm, had to manually create this topic locally
+  name: ssherwood-users
+  partitions-num: 6
+  replication-factor: 3
+server:
+  port: 9081
+spring:
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    properties:
+      schema.registry.url: http://localhost:8081
+  cloud:
+    stream:
+      default:
+        producer:
+          useNativeEncoding: true
+        consumer:
+          useNativeEncoding: true
+      kafka:
+        streams:
+          binder:
+            configuration:
+              commit.interval.ms: 1000
+              default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+              default.value.serde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
+      bindings:
+        ssherwood-users:
+          destination: ssherwood-users
+          consumer:
+            application-id: ssherwood-user-filter
+            useNativeDecoding: true
+        ssherwood-users-filtered:
+          destination: ssherwood-users-filtered
+          producer:
+            useNativeEncoding: true
+logging:
+  level:
+    root: info

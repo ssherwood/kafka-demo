@@ -1,0 +1,6 @@
+{
+  "brokers": "TBD",
+  "jaasconfig": "org.apache.kafka.common.security.plain.PlainLoginModule required username='test' password='test123';",
+  "sr": "TBD",
+  "sr-auth": "test:test123"
+}
